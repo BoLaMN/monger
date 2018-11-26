@@ -15,7 +15,7 @@
       (is (-> conn .getAddress (.sameHost "127.0.0.1")))))
 
   (deftest ^{:authentication true} connect-to-mongo-via-uri-with-valid-credentials
-    (let [{:keys [conn db]} (mg/connect-via-uri "mongodb://clojurewerkz/monger:monger@127.0.0.1/monger-test4")]
+    (let [{:keys [conn db]} (mg/connect-via-uri "mongodb://monger:monger@127.0.0.1/monger-test4")]
       (is (= "monger-test4" (.getName db)))
       (is (-> conn .getAddress (.sameHost "127.0.0.1")))
       (mc/remove db "documents")
@@ -37,6 +37,6 @@
 (deftest ^{:authentication true} test-authentication-with-valid-credentials
     ;; see ./bin/ci/before_script.sh. MK.
   (doseq [s ["monger-test" "monger-test2" "monger-test3" "monger-test4"]]
-    (let [creds (mcr/create "clojurewerkz/monger" "monger-test" "monger")
+    (let [creds (mcr/create "monger" "monger-test" "monger")
           conn  (mg/connect-with-credentials "127.0.0.1" creds)]
       (mc/remove (mg/get-db conn "monger-test") "documents"))))

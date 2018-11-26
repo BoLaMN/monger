@@ -1,11 +1,11 @@
-(defproject com.novemberain/monger "3.2.0-SNAPSHOT"
+(defproject bolamn/monger "3.2.1-SNAPSHOT"
   :description "Monger is a Clojure MongoDB client for a more civilized age: friendly, flexible and with batteries included"
   :url "http://clojuremongodb.info"
   :min-lein-version "2.5.1"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure        "1.8.0"]
-                 [org.mongodb/mongodb-driver "3.6.0-beta2"]
+                 [org.mongodb/mongodb-driver "3.9.0"]
                  [clojurewerkz/support       "1.1.0"]]
   :test-selectors {:default     (fn [m]
                                   (and (not (:performance m))
@@ -27,7 +27,7 @@
                    :all           (constantly true)}
   :source-paths      ["src/clojure"]
   :java-source-paths ["src/java"]
-  :javac-options     ["-target" "1.7" "-source" "1.7"]
+  :javac-options     ["-target" "1.8" "-source" "1.8"]
   :mailing-list {:name "clojure-mongodb"
                  :archive "https://groups.google.com/group/clojure-mongodb"
                  :post "clojure-mongodb@googlegroups.com"}
@@ -52,7 +52,7 @@
              ;; only clj-time/JodaTime available, used to test monger.joda-time w/o clojure.data.json
              :dev2 {:resource-paths ["test/resources"]
                     :dependencies  [[clj-time "0.8.0"               :exclusions [org.clojure/clojure]]]}}
-  :aliases {"all" ["with-profile" "dev:dev,1.6:dev,1.8:dev,dj02x"]}
+  :aliases {"all" ["with-profile" "dev:dev,1.8:dev,dj02x"]}
   :repositories {"sonatype" {:url "http://oss.sonatype.org/content/repositories/releases"
                              :snapshots false
                              :releases {:checksum :fail :update :always}}
